@@ -1,4 +1,7 @@
-#IDE
+# built files
+dist
+
+# IDE
 .idea
 
 # Logs

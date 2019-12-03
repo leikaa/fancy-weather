@@ -4,12 +4,24 @@
   "description": "fancy-weather task",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --progress"
+    "build": "webpack --progress",
+    "start": "webpack --watch"
   },
   "author": "leikaa",
   "license": "ISC",
-  "dependencies": {
+  "browserslist": [
+    "> 1%",
+    "last 3 version"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-loader": "^8.0.6",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0"
   }
 }

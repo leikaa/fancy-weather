@@ -10,6 +10,8 @@ module.exports = {
         filename: '[name].js'
     },
     mode: 'development',
+    devtool: process.env.NODE_ENV === 'production'
+        ? 'hidden-source-map' : 'inline-source-map',
     watchOptions: {
         aggregateTimeout: 600,
         poll: true
@@ -19,7 +21,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader",
+                loader: 'babel-loader',
                 options: {
                     presets: [
                         '@babel/preset-env'
@@ -27,7 +29,5 @@ module.exports = {
                 }
             }
         ]
-    },
-    devtool: process.env.NODE_ENV === 'production'
-        ? 'hidden-source-map' : 'inline-source-map'
+    }
 };

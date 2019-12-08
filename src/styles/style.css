@@ -20,8 +20,10 @@ body {
 }
 
 .icon {
-    font-size: 48px;
-    color: #924da3;
+    font-size: 130px;
+    color: #fff;
+    width: 100%;
+    text-align: center;
 }
 
 .button {
@@ -46,6 +48,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 57px;
 }
 
 .weather-info__top-panel_left {
@@ -140,4 +143,120 @@ body {
     width: 101px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.weather-info__forecast-block {
+    max-width: 600px;
+    width: 100%;
+    height: 600px;
+}
+
+.weather-info__forecast-block-location-name {
+    color: #fff;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 54px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.weather-info__forecast-block-date-time {
+    height: 29px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+}
+
+.weather-info__forecast-block-date-time_date {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.weather-info__forecast-block-date-time_time {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #fff;
+}
+
+.weather-info__forecast-block-weather-info {
+    height: 375px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weather-info__forecast-block-weather-info_temperature {
+    height: 375px;
+    width: 330px;
+    font-weight: bold;
+    font-size: 240px;
+    line-height: 375px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.weather-info__forecast-block-weather-info_forecast {
+    width: 270px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 37px;
+}
+
+.weather-info__forecast-block-weather-info_summary {
+    margin-top: 50px;
+}
+
+.weather-info__forecast-block-weather-info_summary,
+.weather-info__forecast-block-weather-info_feels,
+.weather-info__forecast-block-weather-info_wind,
+.weather-info__forecast-block-weather-info_humidity {
+    margin-left: 90px;
+}
+
+.weather-info__forecast-block-weather-info_next-days {
+    width: 100%;
+    height: 108px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weather-info__forecast-block-weather-info_next-day {
+    width: 30%;
+    height: 108px;
+    color: #fff;
+}
+
+.weather-info__forecast-block-weather-info_next-day:nth-child(2),
+.weather-info__forecast-block-weather-info_next-day:nth-child(3) {
+    margin-left: 5%;
+}
+
+.weather-info__forecast-block-weather-info_next-day-name {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    text-transform: uppercase;
+}
+
+.weather-info__forecast-block-weather-info_next-day-temperature {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 80px;
+    line-height: 98px;
+    text-transform: uppercase;
+    display: inline-block;
+    width: 45%;
+}
+
+.weather-info__forecast-block-weather-info_next-day > .icon {
+    font-size: 50px;
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    vertical-align: top;
 }

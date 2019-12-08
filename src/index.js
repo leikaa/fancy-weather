@@ -6,16 +6,16 @@ import getLinkToImage from './helpers/getLinkToImage';
 
 async function init() {
     try {
-        const language = 'ru';
+        const language = 'en';
         const { loc, city } = await getUserLocation();
         const { currently, daily } = await getWeatherForecast(loc, language);
-        const { urls } = await getLinkToImage(city);
-        //let urls = '';
+        //const { urls } = await getLinkToImage(city);
+        let urls = '';
 
-        const forecastInfo = renderForecastInfo(currently, city);
+        //const forecastInfo = renderForecastInfo(currently, city);
 
-        console.log(urls);
-        renderWeatherApp(forecastInfo, urls, language);
+        //renderWeatherApp(forecastInfo, urls, language);
+        renderWeatherApp(urls, language, currently);
     } catch (e) {
         console.log(e);
     }

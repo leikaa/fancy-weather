@@ -168,7 +168,26 @@ export default function renderWeatherApp(urls, language, currently) {
     divForecastLeftBlock.appendChild(divLocationWeatherInfo);
     divForecastLeftBlock.className = 'weather-info__forecast-block';
     divWeatherBlock.appendChild(divForecastLeftBlock);
-    
+
+    // map right block
+    const divMapRightBlock = document.createElement('div');
+    divMapRightBlock.className = 'weather-info__map-block';
+    divWeatherBlock.appendChild(divMapRightBlock);
+
+    const divMap = document.createElement('div');
+    divMap.className = 'weather-info__map-block_map';
+    divMapRightBlock.appendChild(divMap);
+
+    const divLatitude = document.createElement('div');
+    divLatitude.innerHTML = 'Latitude: ' + '7&deg; 10\'';
+    divLatitude.className = 'weather-info__map-block_latitude';
+    divMapRightBlock.appendChild(divLatitude);
+
+    const divLongitude = document.createElement('div');
+    divLongitude.innerHTML = 'Longitude: ' + '7&deg; 10\'';
+    divLongitude.className = 'weather-info__map-block_longitude';
+    divMapRightBlock.appendChild(divLongitude);
+
     // add weather forecast info
     //divWeatherBlock.appendChild(forecastInfo);
 

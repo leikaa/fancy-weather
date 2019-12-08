@@ -17,6 +17,9 @@ body {
     height: 800px;
     padding: 40px 90px 0 93px;
     box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .icon {
@@ -45,6 +48,7 @@ body {
 
 .weather-info__top-panel {
     height: 44px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -259,4 +263,31 @@ body {
     width: 50%;
     text-align: left;
     vertical-align: top;
+}
+
+.weather-info__map-block {
+    margin-top: 80px;
+}
+
+.weather-info__map-block_map {
+    height: 400px;
+    width: 400px;
+    border-radius: 30px;
+
+    background-color: lightsalmon;
+}
+
+.weather-info__map-block_latitude {
+    margin-top: 25px;
+}
+
+.weather-info__map-block_latitude,
+.weather-info__map-block_longitude {
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: right;
+    text-transform: capitalize;
 }

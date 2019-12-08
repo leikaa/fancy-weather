@@ -13,11 +13,11 @@ export default function renderTopPanel(language) {
     const divSwitchTemperature = document.createElement('div');
     divSwitchTemperature.className = 'weather-info__top-panel-switch-temperature';
     const divFahrenheit = document.createElement('div');
-    divFahrenheit.className = 'button weather-info__top-panel-switch-temperature_fahrenheit';
+    divFahrenheit.className = 'active button weather-info__top-panel-switch-temperature_fahrenheit';
     divFahrenheit.innerHTML = '&deg;F';
     divSwitchTemperature.appendChild(divFahrenheit);
     const divCelsius = document.createElement('div');
-    divCelsius.className = 'active button weather-info__top-panel-switch-temperature_celsius';
+    divCelsius.className = 'button weather-info__top-panel-switch-temperature_celsius';
     divCelsius.innerHTML = '&deg;C';
     divSwitchTemperature.appendChild(divCelsius);
     leftPanelButtonsContainer.appendChild(divSwitchTemperature);

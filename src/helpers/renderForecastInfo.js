@@ -1,6 +1,5 @@
-export default function renderForecastInfo(currently, city) {
-    const { summary, icon, apparentTemperature, humidity, windSpeed } = currently;
-    const infoContainer = document.createDocumentFragment();
+export default function renderForecastInfo(currently, daily, city, timezone, language) {
+    const { summary, icon, apparentTemperature, humidity, windSpeed, temperature } = currently;
 
     // icons map
     const weatherIconClassName = {
@@ -17,9 +16,22 @@ export default function renderForecastInfo(currently, city) {
         'default': 'icon wi wi-na'
     };
 
+    // date time options
+    const options = {
+        timezone,
+        hour12: false,
+        weekday: 'short',
+        day: '2-digit',
+        month: 'long',
+        hour: 'numeric',
+        minute: 'numeric'
+    };
+
+    const date = new Date().toLocaleString(language, options);
+
     // location name
     const divLocationName = document.createElement('div');
-    divLocationName.innerText = 'City, Country';
+    divLocationName.innerText = `${city}, Country`;
     divLocationName.className = 'weather-info__forecast-block-location-name';
 
     // location date-time
@@ -27,21 +39,16 @@ export default function renderForecastInfo(currently, city) {
     divLocationDateTime.className = 'weather-info__forecast-block-date-time';
 
     const divLocationDate = document.createElement('div');
-    divLocationDate.innerText = 'Mon 28 October';
+    divLocationDate.innerText = `${date}`;
     divLocationDate.className = 'weather-info__forecast-block-date-time_date';
     divLocationDateTime.appendChild(divLocationDate);
-
-    const divLocationTime = document.createElement('div');
-    divLocationTime.innerText = '17:23';
-    divLocationTime.className = 'weather-info__forecast-block-date-time_time';
-    divLocationDateTime.appendChild(divLocationTime);
 
     // location weather forecast info block
     const divLocationWeatherInfo = document.createElement('div');
     divLocationWeatherInfo.className = 'weather-info__forecast-block-weather-info';
 
     const divLocationTemperature = document.createElement('div');
-    divLocationTemperature.innerHTML = '10&deg;';
+    divLocationTemperature.innerHTML = `${Math.round(temperature)}&deg;`;
     divLocationTemperature.className = 'weather-info__forecast-block-weather-info_temperature';
     divLocationWeatherInfo.appendChild(divLocationTemperature);
 
@@ -56,25 +63,27 @@ export default function renderForecastInfo(currently, city) {
 
     // summary
     const DivSummary = document.createElement('div');
-    DivSummary.innerText = 'overcast'.toUpperCase();
+    DivSummary.innerText = summary;
     DivSummary.className = 'weather-info__forecast-block-weather-info_summary';
     divLocationForecastInfo.appendChild(DivSummary);
 
     // feels like
     const DivFeelsLike = document.createElement('div');
-    DivFeelsLike.innerHTML = 'feels like: '.toUpperCase() + '7&deg;';
+    DivFeelsLike.innerHTML = `feels like: ${Math.round(apparentTemperature)}&deg;`;
     DivFeelsLike.className = 'weather-info__forecast-block-weather-info_feels';
     divLocationForecastInfo.appendChild(DivFeelsLike);
 
     // wind
     const DivWind = document.createElement('div');
-    DivWind.innerHTML = 'wind: '.toUpperCase() + '2 m/s';
+    const windSpeedInMeters = ((windSpeed * 1000) / 3600).toFixed(2);
+    DivWind.innerHTML = 'wind: '.toUpperCase() + `${windSpeedInMeters} m/s`;
     DivWind.className = 'weather-info__forecast-block-weather-info_wind';
     divLocationForecastInfo.appendChild(DivWind);
 
     // humidity
     const DivHumidity = document.createElement('div');
-    DivHumidity.innerHTML = 'humidity: 83%'.toUpperCase();
+    const humidityInPercents = humidity * 100;
+    DivHumidity.innerHTML = `humidity: ${humidityInPercents}%`;
     DivHumidity.className = 'weather-info__forecast-block-weather-info_humidity';
     divLocationForecastInfo.appendChild(DivHumidity);
 
@@ -83,17 +92,27 @@ export default function renderForecastInfo(currently, city) {
     divNextDaysForecast.className = 'weather-info__forecast-block-weather-info_next-days';
     divLocationWeatherInfo.appendChild(divNextDaysForecast);
 
+    const nextDayOptions = {
+        timezone,
+        weekday: 'long'
+    };
+
     for (let i = 1; i <= 3; i++) {
+        const { time, icon, temperatureMax, temperatureMin } = daily.data[i];
+        const temperatureAvg = Math.floor((temperatureMax + temperatureMin) / 2);
+
+        const nextDate = new Date(time * 1000).toLocaleString(language, nextDayOptions);
+
         const divNextDay = document.createElement('div');
         divNextDay.className = 'weather-info__forecast-block-weather-info_next-day';
 
         const divNextDayName = document.createElement('div');
-        divNextDayName.innerHTML = 'day' + i;
+        divNextDayName.innerHTML = nextDate;
         divNextDayName.className = 'weather-info__forecast-block-weather-info_next-day-name';
         divNextDay.appendChild(divNextDayName);
 
         const divNextDayTemperature = document.createElement('div');
-        divNextDayTemperature.innerHTML = '7&deg;';
+        divNextDayTemperature.innerHTML = `${temperatureAvg}&deg;`;
         divNextDayTemperature.className = 'weather-info__forecast-block-weather-info_next-day-temperature';
         divNextDay.appendChild(divNextDayTemperature);
 

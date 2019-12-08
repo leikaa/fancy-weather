@@ -4,12 +4,21 @@ export default function renderForecastInfo(currently, city) {
 
     // icon
     const weatherIconClassName = {
-        'partly-cloudy-night': 'icon wi wi-night-partly-cloudy',
+        'clear-day': 'icon wi wi-day-sunny',
+        'clear-night': 'icon wi wi-night-clear',
+        'partly-cloudy-day': 'icon wi wi-day-cloudy',
+        'partly-cloudy-night': 'icon wi wi-night-alt-cloudy',
+        'cloudy': 'icon wi wi-cloudy',
+        'rain': 'icon wi wi-rain',
+        'sleet': 'icon wi wi-sleet',
+        'snow': 'icon wi wi-snow',
+        'wind': 'icon wi wi-strong-wind',
+        'fog': 'icon wi wi-fog',
+        'default': 'icon wi wi-na'
     };
 
     const iconEl = document.createElement('i');
-    //iconEl.className = weatherIconClassName[icon];
-    iconEl.className = 'partly-cloudy-night';
+    iconEl.className = weatherIconClassName[icon] ? weatherIconClassName[icon] : weatherIconClassName['default'];
     infoContainer.appendChild(iconEl);
 
     // summary

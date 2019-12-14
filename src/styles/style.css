@@ -273,8 +273,15 @@ body {
     height: 400px;
     width: 400px;
     border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+}
 
-    background-color: lightsalmon;
+.inner_map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .weather-info__map-block_latitude {

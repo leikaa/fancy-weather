@@ -4,7 +4,7 @@ export default async function getLinkToImage(currently, daytime, season) {
         const { summary } = currently;
 
         // to make a better match for background image you can delete 2 of 3 parameters from ${season},${daytime},${summary} query string
-        return fetch(`https://api.unsplash.com/photos/random?orientation=landscape&query=town,${season},${daytime},${summary}&client_id=${IMAGE_API_TOKEN}`)
+        return fetch(`https://api.unsplash.com/photos/random?orientation=landscape&query=town,${season}&client_id=${IMAGE_API_TOKEN}`)
             .then(response => response.json());
     } catch (e) {
         console.log(e);

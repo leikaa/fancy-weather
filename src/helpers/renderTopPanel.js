@@ -5,11 +5,36 @@ export default function renderTopPanel(language) {
     divSwitchImage.className = 'button weather-info__top-panel-switch-image';
     leftPanelButtonsContainer.appendChild(divSwitchImage);
 
+    //language select
     const divSwitchLanguage = document.createElement('div');
-    divSwitchLanguage.className = 'button weather-info__top-panel-switch-language';
-    divSwitchLanguage.innerText = language.toUpperCase();
+    divSwitchLanguage.className = 'weather-info__top-panel-switch-language';
     leftPanelButtonsContainer.appendChild(divSwitchLanguage);
 
+    const divCurrentLanguage = document.createElement('div');
+    divCurrentLanguage.className = 'button weather-info__top-panel-switch-language_title';
+    divCurrentLanguage.innerText = language.toUpperCase();
+    divSwitchLanguage.appendChild(divCurrentLanguage);
+
+    const ulLanguageList = document.createElement('ul');
+    ulLanguageList.className = 'weather-info__top-panel-switch-language_list';
+    divSwitchLanguage.appendChild(ulLanguageList);
+
+    const liEn = document.createElement('li');
+    liEn.className = 'active-lang weather-info__top-panel-switch-language_list-item';
+    liEn.innerText = 'EN';
+    ulLanguageList.appendChild(liEn);
+
+    const liRu = document.createElement('li');
+    liRu.className = 'weather-info__top-panel-switch-language_list-item';
+    liRu.innerText = 'RU';
+    ulLanguageList.appendChild(liRu);
+
+    const liBe = document.createElement('li');
+    liBe.className = 'weather-info__top-panel-switch-language_list-item';
+    liBe.innerText = 'BE';
+    ulLanguageList.appendChild(liBe);
+
+    // temperature
     const divSwitchTemperature = document.createElement('div');
     divSwitchTemperature.className = 'weather-info__top-panel-switch-temperature';
     const divFahrenheit = document.createElement('div');

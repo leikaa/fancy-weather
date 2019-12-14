@@ -1,4 +1,4 @@
-export default function renderForecastInfo(currently, daily, city, timezone, language) {
+export default function renderForecastInfo(currently, daily, city, timezone, language, country, countryMap) {
     const { summary, icon, apparentTemperature, humidity, windSpeed, temperature } = currently;
 
     // icons map
@@ -31,7 +31,7 @@ export default function renderForecastInfo(currently, daily, city, timezone, lan
 
     // location name
     const divLocationName = document.createElement('div');
-    divLocationName.innerText = `${city}, Country`;
+    divLocationName.innerText = `${city}, ${countryMap[country]}`;
     divLocationName.className = 'weather-info__forecast-block-location-name';
 
     // location date-time

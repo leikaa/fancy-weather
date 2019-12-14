@@ -161,6 +161,7 @@ body {
     line-height: 54px;
     text-transform: uppercase;
     margin-bottom: 5px;
+    white-space: nowrap;
 }
 
 .weather-info__forecast-block-date-time {

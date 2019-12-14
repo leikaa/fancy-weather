@@ -26,12 +26,12 @@ export default function renderForecastInfo(currently, daily, city, timezone, lan
         hour: 'numeric',
         minute: 'numeric'
     };
-
     const date = new Date().toLocaleString(language, options);
 
     // location name
+    const countryName = countryMap[country] ? countryMap[country] : countryMap['default'];
     const divLocationName = document.createElement('div');
-    divLocationName.innerText = `${city}, ${countryMap[country]}`;
+    divLocationName.innerText = `${city}, ${countryName}`;
     divLocationName.className = 'weather-info__forecast-block-location-name';
 
     // location date-time

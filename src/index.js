@@ -11,7 +11,12 @@ import setTopPanelEvents from "./helpers/setTopPanelEvents";
 
 async function init() {
     try {
-        const language = 'en';
+        let language = 'en';
+        if (localStorage.getItem('language')) {
+            language = localStorage.getItem('language');
+        }
+        localStorage.setItem('language', language);
+
         const { loc, city, timezone, country } = await getUserLocation();
         const { currently, daily } = await getWeatherForecast(loc, language);
         const { daytime, season } = getAdditionalImageParams(timezone, language);

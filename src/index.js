@@ -14,7 +14,7 @@ async function init() {
         const language = 'en';
         const { loc, city, timezone, country } = await getUserLocation();
         const { currently, daily } = await getWeatherForecast(loc, language);
-        const { daytime, season} = getAdditionalImageParams(timezone, language);
+        const { daytime, season } = getAdditionalImageParams(timezone, language);
         const { urls } = await getLinkToImage(currently, daytime, season);
         //let urls = '';
 
@@ -23,7 +23,7 @@ async function init() {
         const rightMapBlock = renderMapBlock(loc);
 
         renderWeatherApp(urls, topPanelBlock, leftForecastBlock, rightMapBlock);
-        setTopPanelEvents(currently, daytime, season, daily, language);
+        setTopPanelEvents(currently, daily, language, timezone);
     } catch (e) {
         console.log(e);
     }

@@ -1,6 +1,10 @@
 import getLinkToImage from './getLinkToImage';
+import getSearchLocationCoordinates from "./getSearchLocationCoordinates";
+import getWeatherForecast from "./getWeatherForecast";
+import renderForecastInfo from "./renderForecastInfo";
+import {countryMap} from "./countryCodesMap";
 
-export default function setTopPanelEvents(currently, daytime, season, daily) {
+export default function setTopPanelEvents(currently, daytime, season, daily, language) {
     const { apparentTemperature, temperature } = currently;
 
     function toCelsius(temperature) {
@@ -35,7 +39,7 @@ export default function setTopPanelEvents(currently, daytime, season, daily) {
     });
 
     // language section
-    document.querySelector('.weather-info__top-panel-switch-language').addEventListener('click', function () {
+    document.querySelector('.weather-info__top-panel-switch-language').addEventListener('click', () => {
         document.querySelector('.weather-info__top-panel-switch-language_list').classList.toggle('visible');
         document.querySelector('.weather-info__top-panel-switch-language_title').classList.toggle('clicked');
     });
@@ -52,5 +56,25 @@ export default function setTopPanelEvents(currently, daytime, season, daily) {
         document.querySelector('.weather-info__top-panel-switch-temperature_fahrenheit').classList.remove('active');
         this.classList.add('active');
         renderDegrees('celsius')
+    });
+
+    // get location rendering according to search
+    document.querySelector('.weather-info__top-panel-submit').addEventListener('click', async function() {
+        const location = document.querySelector('.weather-info__top-panel-search').value;
+        const { results } = await getSearchLocationCoordinates(location);
+
+        let locationData = results;
+        if (results.length > 1) {
+            locationData = results[0];
+        }
+        const { geometry, components } = locationData;
+        const { lat, lng } = geometry;
+        const { country_code } = components;
+        const locCoords = `${lat},${lng}`;
+
+        const { currently, daily, timezone } = await getWeatherForecast(locCoords, language);
+        const leftForecastBlock = renderForecastInfo(currently, daily, location, timezone, language, country_code, countryMap);
+
+        document.querySelector('.weather-info__forecast-block').replaceWith(leftForecastBlock);
     });
 }

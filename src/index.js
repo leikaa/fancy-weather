@@ -23,7 +23,7 @@ async function init() {
         const rightMapBlock = renderMapBlock(loc);
 
         renderWeatherApp(urls, topPanelBlock, leftForecastBlock, rightMapBlock);
-        setTopPanelEvents(currently, daytime, season, daily);
+        setTopPanelEvents(currently, daytime, season, daily, language);
     } catch (e) {
         console.log(e);
     }

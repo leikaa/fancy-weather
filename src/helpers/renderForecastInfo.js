@@ -29,6 +29,7 @@ export default function renderForecastInfo(currently, daily, city, timezone, lan
     const date = new Date().toLocaleString(language, options);
 
     // location name
+    country = country.toUpperCase();
     const countryName = countryMap[country] ? countryMap[country] : countryMap['default'];
     const divLocationName = document.createElement('div');
     divLocationName.innerText = `${city}, ${countryName}`;

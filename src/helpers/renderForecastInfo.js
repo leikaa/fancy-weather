@@ -1,3 +1,5 @@
+import renderTime from "./renderTime";
+
 export default function renderForecastInfo(currently, daily, city, timezone, language, country, countryMap) {
     const { summary, icon, apparentTemperature, humidity, windSpeed, temperature } = currently;
 
@@ -26,7 +28,17 @@ export default function renderForecastInfo(currently, daily, city, timezone, lan
         hour: 'numeric',
         minute: 'numeric'
     };
-    const date = new Date().toLocaleString(language, options);
+    let date = new Date().toLocaleString(language, options);
+
+    const timeOptions = {
+      timeZone: timezone,
+      hour12: false,
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    };
+    let time = new Date().toLocaleString(language, timeOptions);
+    renderTime(time, language, timezone, date);
 
     // location name
     country = country.toUpperCase();

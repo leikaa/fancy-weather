@@ -21,7 +21,6 @@ async function init() {
         const { currently, daily } = await getWeatherForecast(loc, language);
         const { daytime, season } = getAdditionalImageParams(timezone, language);
         const { urls } = await getLinkToImage(currently, daytime, season);
-        //let urls = '';
 
         const leftForecastBlock = renderForecastInfo(currently, daily, city, timezone, language, country, countryMap);
         const topPanelBlock = renderTopPanel(language);

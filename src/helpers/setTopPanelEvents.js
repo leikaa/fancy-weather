@@ -100,11 +100,15 @@ export default function setTopPanelEvents(currently, daily, language, timezone) 
         const locCoords = `${lat},${lng}`;
 
         const { currently, daily, timezone } = await getWeatherForecast(locCoords, language);
+
+        let killId = setTimeout(function() {
+          for (let i = killId; i > 0; i--) clearInterval(i)
+        }, 0);
+
         const leftForecastBlock = renderForecastInfo(currently, daily, location, timezone, language, country_code, countryMap);
         document.querySelector('.weather-info__forecast-block').replaceWith(leftForecastBlock);
         changeDegreesByType(currently, daily);
         changeBackground(currently, timezone, language);
-
         const rightMapBlock = renderMapBlock(locCoords);
         document.querySelector('.weather-info__map-block').replaceWith(rightMapBlock);
     });

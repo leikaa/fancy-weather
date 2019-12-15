@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress",
     "start": "webpack --watch",
-    "lint": "eslint ./src/*.js",
-    "fix": "eslint ./src/*.js --fix"
+    "lint": "eslint ./src/",
+    "fix": "eslint ./src/ --fix"
   },
   "author": "leika",
   "license": "ISC",

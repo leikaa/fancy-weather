@@ -8,5 +8,13 @@ module.exports = {
         "ecmaVersion": 2018
     },
     "rules": {
+        "no-console": "off",
+        "max-len": "off",
+        "no-plusplus": "off",
+        "no-shadow": "off",
+        "no-undef": "off",
+        "no-new": "off",
+        "camelcase": "off",
+        "prefer-destructuring": "off"
     }
 };

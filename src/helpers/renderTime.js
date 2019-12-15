@@ -4,7 +4,7 @@ export default function renderTime(time, language, timezone, date) {
   let minutes = Number(result[1]);
   let hours = Number(result[0]);
 
-  setInterval(function () {
+  setInterval(() => {
     let secondsToRender = seconds;
     let minutesToRender = minutes;
     let hoursToRender = hours;
@@ -32,7 +32,7 @@ export default function renderTime(time, language, timezone, date) {
       }
     }
 
-    if (secondsToRender === `00`) {
+    if (secondsToRender === '00') {
       document.querySelector('.weather-info__forecast-block-date-time_date').innerText = `${date.slice(0, -5)}${hoursToRender}:${minutesToRender}`;
     }
   }, 1000);

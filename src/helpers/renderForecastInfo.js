@@ -18,7 +18,7 @@ export default function renderForecastInfo(currently, daily, city, timezone, lan
 
     // date time options
     const options = {
-        timezone,
+        timeZone: timezone,
         hour12: false,
         weekday: 'short',
         day: '2-digit',
